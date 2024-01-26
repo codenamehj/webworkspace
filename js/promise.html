@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="" />
+    <script type="module">
+        import cal from '../module/calculator.js';
+        console.log(cal.add(1, 2));
+    </script>
+</head>
+
+<body>
+    <script>
+        let fetch = (url, method, data) => {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open(method, url);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                xhr.send(JSON.stringify(data));
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != XMLHttpRequest.DONE) return;
+
+                    if (xhr.status >= 200 && xhr.status < 400) {
+                        resolve(xhr.response);
+                    } else {
+                        reject(new Error(xhr.status));
+                    }
+                }
+            })
+        }
+
+        fetch('https://reqres.in/api/users?page=2', 'GET')
+            .then(result => JSON.parse(result))
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+
+        console.log('fetch 바깥에 실행');
+    </script>
+</body>
+
+</html>
