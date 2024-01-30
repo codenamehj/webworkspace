@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+const cors = require('cors');
 const app = express();
 
 // application/x-www-form-urlencoded
@@ -31,3 +33,44 @@ app.post('/message', (req, res) => {
 app.listen(5000, () => {
     console.log('Server Start');
 })
+
+let sessionSetting = session({
+    secret: "Have$A!@Nice_day", // 하드코딩 X
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        maxAge: 60000 // 밀리세컨드
+    }
+});
+
+app.use(sessionSetting);
+
+app.post('/login', (req, res) => {
+    const { id, pwd } = req.body;
+    if (!req.session.isLogin) {
+        req.session.user = id;
+        req.session.isLogin = true;
+    }
+    req.session.save((err) => {
+        if (err) throw err;
+        res.redirect("/");
+    });
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+})
+
+const corsOptions = {
+    origin: 'http://127.0.0.1:5500',
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
+app.get('/', (req, res) => {
+    res.json(req.session);
+});
