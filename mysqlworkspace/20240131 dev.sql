@@ -35,4 +35,27 @@ SELECT	user_no
         , join_date
 FROM t_users;
 
+DESC t_users;
+
+INSERT INTO t_users
+			(
+				user_no
+				, user_id
+				, user_pwd
+				, user_name
+				, user_gender
+				, user_age
+				, join_date
+			)
+			VALUES
+            (
+				1
+                , 'user1'
+                , '1111'
+                , 'Hong'
+                , 'M'
+                , 20
+                , '2024-01-31'
+            );
+		
 COMMIT;
