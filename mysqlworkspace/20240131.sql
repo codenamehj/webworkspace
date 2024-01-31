@@ -38,7 +38,7 @@ CREATE TABLE `customers` (
 
 -- 이제부터는 이렇게 아래쪽으로 나열해야 함.
 SELECT 	id
-				, name 
+		, name 
                 , email
                 , phone
                 , address
