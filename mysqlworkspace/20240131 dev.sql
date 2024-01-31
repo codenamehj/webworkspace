@@ -3,10 +3,10 @@ use dev;
 DESC customers;
 
 SELECT	id
-				, name
-				, email
-                , phone
-                , address
+		, name
+		, email
+		, phone
+		, address
 FROM customers;
 
 /*
@@ -25,3 +25,14 @@ CREATE TABLE `t_users` (
     `join_date` DATE,
     PRIMARY KEY (`user_no`)
 );
+
+SELECT	user_no
+		, user_id
+		, user_pwd
+        , user_name
+        , user_gender
+        , user_age
+        , join_date
+FROM t_users;
+
+COMMIT;
