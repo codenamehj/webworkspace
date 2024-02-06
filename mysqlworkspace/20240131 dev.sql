@@ -54,8 +54,8 @@ INSERT INTO t_users
 			VALUES
             (
 				1
-                , 'user1'
-                , '1111'
+                , 'admin'
+                , 'admin'
                 , 'Hong'
                 , 'M'
                 , 20

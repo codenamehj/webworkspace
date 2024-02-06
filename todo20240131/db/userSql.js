@@ -42,5 +42,6 @@ module.exports = {
     userInfo,
     userInsert,
     userUpdateAll,
-    userUpdateInfo
+    userUpdateInfo,
+    userDelete
 }
