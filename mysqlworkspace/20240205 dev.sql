@@ -63,3 +63,5 @@ INSERT INTO t_users
             );
 		
         COMMIT;
+        
+        -- axios 설치
