@@ -30,7 +30,7 @@ let userUpdateAll =
 
 let userUpdateInfo =
     `UPDATE t_users
-    SET user_name = ?, user_gender = ?, user_age = ?
+    SET user_name = ?, user_gender = ?, user_age = ?, join_date = ?
     WHERE user_id = ?`; // 배열[단일값, 단일값, 단일값, 단일값]
 
 let userDelete = 

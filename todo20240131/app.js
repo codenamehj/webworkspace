@@ -78,7 +78,7 @@ async function updateInfo(request) {
 }
 
 function getInfo(obj) {
-    let getData = ["user_name", "user_gender", "user_age"];
+    let getData = ["user_name", "user_gender", "user_age", "join_date"];
     let newAry = [];
     for (let target of getData) {
         for (let field in obj) {
