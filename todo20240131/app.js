@@ -12,30 +12,34 @@ app.listen(3000, () => {
     console.log('Server Start, http://localhost:3000');
 });
 
+// 전체 조회
 app.get('/users', async (req, res) => {
     let list = await mysql.executeQuery('userList');
     res.json(list);
 });
 
+// 단건 조회
 app.get('/users/:id', async (req, res) => {
     let userId = req.params.id;
     let info = (await mysql.executeQuery('userInfo', userId))[0]; // 배열을 객체로
     res.json(info);
 })
 
-
+// 등록
 app.post('/users', async (req, res) => {
     let data = req.body.param; // 객체
     let result = await mysql.executeQuery('userInsert', data);
     res.json(result);
 });
 
+// 수정
 app.put('/users/:id', async (req, res) => {
     // let result = await updateAll(req);
     let result = await updateInfo(req);
     res.json(result);
 });
 
+// 삭제
 app.delete('/users/:id', async(req, res)=>{
     let userId = req.params.id;
     let result = await mysql.executeQuery('userDelete',userId);
