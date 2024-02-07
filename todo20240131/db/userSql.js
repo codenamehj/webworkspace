@@ -37,7 +37,7 @@ let userDelete =
     `DELETE FROM t_users
     WHERE user_id = ?`;
 
-module.exports = {
+module.exports = { // 변수명 == 필드명, 변수가 가지고 있는 값이 필드의 값
     userList,
     userInfo,
     userInsert,
